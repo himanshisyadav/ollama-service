@@ -27,9 +27,9 @@ Create the following layout for your project. This structure helps you manage yo
 │   ├── README.md           # This file
 ```
 
-## 3. Run Ollama with SLURM 
+## 3. Running the Ollama server on Compute Nodes
 
-You can use the template SLURM script to start the Ollama service on a GPU node
+You can use the template SLURM script to start the Ollama server on a GPU node. Ollama will automatically detect the GPUs available. 
 
 ```
 sbatch ollama-slurm.sh
