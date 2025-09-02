@@ -90,12 +90,12 @@ echo "🔄 Server is running... Job will continue until time limit or manual can
 echo "💡 To interact with models, ssh to $COMPUTE_NODE or use srun commands"
 echo ""
 
-# # Function to cleanup on exit
-# cleanup() {
-#     echo "🛑 Cleaning up..."
-#     apptainer instance stop $INSTANCE_NAME 2>/dev/null || true
-# }
-# trap cleanup EXIT
+# Function to cleanup on exit
+cleanup() {
+    echo "🛑 Cleaning up..."
+    apptainer instance stop $INSTANCE_NAME 2>/dev/null || true
+}
+trap cleanup EXIT
 
 # Keep the job alive and monitor the server
 while true; do

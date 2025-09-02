@@ -2,6 +2,8 @@
 
 A comprehensive toolkit for deploying and running Ollama (Large Language Models) on the University of Chicago Research Computing Center's Midway3 cluster using multiple deployment methods.
 
+OLLAMA (Omni-Layer Learning Language Acquisition Model) is a platform designed for running open-source large language models (LLMs) directly on your local machine, rather than relying on cloud-based services. This enables users to utilize and develop LLMs easily while maintaining privacy and reducing costs.
+
 ## 📁 Repository Structure
 
 ```
