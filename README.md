@@ -33,12 +33,6 @@ This repository provides three different approaches to deploy Ollama on Midway3,
 - ✅ **Advantages**: Isolated environment, no dependency conflicts, reproducible
 - ❌ **Considerations**: Requires Apptainer/Singularity installation
 
-**Features:**
-- Pre-configured for Midway3's GPU partition
-- SLURM job scripts with proper resource requests
-- SSH tunneling setup for `midway3.rcc.uchicago.edu`
-- Automated cleanup and monitoring
-
 ### 🐍 [`ollama-conda/`](./ollama-conda/)
 **Conda environment-based deployment**
 
@@ -46,22 +40,12 @@ This repository provides three different approaches to deploy Ollama on Midway3,
 - ✅ **Advantages**: Integrates with RCC's Anaconda modules, flexible development
 - ❌ **Considerations**: Manual dependency management on shared system
 
-**Features:**
-- Environment files tested on Midway3
-- Compatible with RCC's Python modules
-
 ### ⚙️ [`ollama-source/`](./ollama-source/)
 **Direct source compilation and installation**
 
 - ✅ **Best for**: Maximum performance, custom builds, latest Ollama features
 - ✅ **Advantages**: Native performance on Midway3 hardware, full customization
 - ❌ **Considerations**: Manual dependency management, compilation complexity
-
-**Features:**
-- Optimized for Midway3 nodes
-- CUDA setup for V100 and A100 GPUs
-- Custom build flags for performance
-- Integration with RCC's development modules
 
 ## ⚠️ What's Not Included
 
