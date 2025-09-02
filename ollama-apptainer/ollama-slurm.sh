@@ -8,22 +8,24 @@
 ##SBATCH --cpus-per-task=4
 ##SBATCH --mem=16G
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:25:00
+#SBATCH --time=00:05:00
 #SBATCH --output=./SLURM_logs/ollama_%j.out
 #SBATCH --error=./SLURM_logs/ollama_%j.err
 
 # Load modules
 module load apptainer/1.4.1
 
+cd $SLURM_SUBMIT_DIR
+
 # Configuration
 CONTAINER_IMAGE="./ollama.sif"
 INSTANCE_NAME="ollama-$USER-$SLURM_JOB_ID"
 
 HOST_PROJECT_PATH="$PWD"
-CONTAINER_PROJECT_PATH="~/ollama-container"
+CONTAINER_PROJECT_PATH="/workspace"
 
-HOST_MODEL_PATH="./models"
-CONTAINER_MODEL_PATH="~/ollama-container/models"
+HOST_MODEL_PATH="$HOST_PROJECT_PATH/models"
+CONTAINER_MODEL_PATH="$CONTAINER_PROJECT_PATH/models"
 
 PORT=11434
 DEFAULT_MODEL="llama2"  # Set your preferred default model
@@ -41,11 +43,15 @@ echo "🆔 SLURM Job ID: $SLURM_JOB_ID"
 echo "🚀 Starting Ollama container instance..."
 
 BIND_MOUNTS="/home:/home,/scratch:/scratch,$HOST_PROJECT_PATH:$CONTAINER_PROJECT_PATH,$HOST_MODEL_PATH:$CONTAINER_MODEL_PATH"
+echo "🔗 Binding mounts: $BIND_MOUNTS"
 
 apptainer instance start \
     --nv \
-    --bind "$BIND_MOUNTS" \
-    "$CONTAINER_IMAGE" "$INSTANCE_NAME"
+    --bind $BIND_MOUNTS \
+    $CONTAINER_IMAGE $INSTANCE_NAME || {
+    echo "❌ Failed to start Apptainer instance"
+    exit 1
+}
 
 # Start Ollama serve inside the container in the background
 echo "🔧 Starting Ollama server..."
@@ -57,8 +63,12 @@ echo "⏳ Waiting for server to initialize..."
 sleep 5
 
 echo "🦙 Ollama server is now running at http://$COMPUTE_NODE:$PORT"
-echo "🔗 If accessing from outside the cluster, you may need SSH tunneling:"
-echo "   ssh -L $PORT:$COMPUTE_NODE:$PORT your-username@cluster-login-node"
+echo "🔗 To access from your local machine, use SSH tunneling:"
+echo "   ssh -L $PORT:$COMPUTE_NODE:$PORT $USER@midway3.rcc.uchicago.edu"
+echo ""
+echo "✅ After setting up the tunnel, verify Ollama is running by visiting:"
+echo "   http://localhost:$PORT in your local browser"
+echo "   You should see: \"Ollama is running\""
 
 # Provide usage instructions
 echo ""
