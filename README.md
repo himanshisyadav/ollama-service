@@ -37,7 +37,7 @@ This repository provides three different approaches to deploy Ollama on Midway3,
 - SSH tunneling setup for `midway3.rcc.uchicago.edu`
 - Automated cleanup and monitoring
 
-### 🐍 [`conda/`](./conda/)
+### 🐍 [`ollama-conda/`](./ollama-conda/)
 **Conda environment-based deployment**
 
 - ✅ **Best for**: Development, testing, interactive work
@@ -48,7 +48,7 @@ This repository provides three different approaches to deploy Ollama on Midway3,
 - Environment files tested on Midway3
 - Compatible with RCC's Python modules
 
-### ⚙️ [`source/`](./source/)
+### ⚙️ [`ollama-source/`](./ollama-source/)
 **Direct source compilation and installation**
 
 - ✅ **Best for**: Maximum performance, custom builds, latest Ollama features
