@@ -8,12 +8,12 @@ OLLAMA (Omni-Layer Learning Language Acquisition Model) is a platform designed f
 
 ```
 .
-├── README.md                 # This file
-├── LICENSE                   # Project license
-├── .gitignore               # Git ignore patterns
 ├── ollama-apptainer/        # Apptainer/Singularity deployment
-├── ollama-conda/                   # Conda environment deployment
-└── ollama-source/                  # Source code installation
+├── ollama-conda/            # Conda environment deployment
+└── ollama-source/           # Source code installation
+├── LICENSE                  # License file
+├── .gitignore               # Git ignore rules
+├── README.md                # This file
 ```
 
 ## 🎯 Overview
