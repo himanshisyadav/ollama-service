@@ -4,7 +4,7 @@ Containers provide a way to run software in a portable manner across different e
 
 On Midway3, we use Apptainer to execute containers. The following commands show how to set up an Ollama container for use on the Midway3 cluster.
 
-## 1. Download and Build Apptainer Container 
+## 1. Downloading and Building Apptainer Container 
 
 You can create a `ollama.sif` container by downloading the official pre-built Ollama images on Docker Hub and building the container.
 
@@ -14,7 +14,7 @@ apptainer build ollama.sif docker://ollama/ollama
 
 **Note:** It is best to use the `build` partition on Midway3 for pulling images and building containers. 
 
-## 2. Prepare Your Directory Structure
+## 2. Preparing Directory Structure
 
 Create the following layout for your project. This structure helps you manage your models and container effectively.
 
@@ -27,7 +27,7 @@ Create the following layout for your project. This structure helps you manage yo
 │   ├── README.md           # This file
 ```
 
-## 3. Running the Ollama server on Compute Nodes
+## 3. Running Ollama server on Compute Nodes
 
 You can use the template SLURM script to start the Ollama server on a GPU node. Ollama will automatically detect the GPUs available. 
 
