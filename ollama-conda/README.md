@@ -1,4 +1,4 @@
-# Ollama using Anaconda Environment
+# Ollama using an Anaconda Environment
 
 ## 1. Creating Anaconda Environment
 
